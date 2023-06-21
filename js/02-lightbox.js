@@ -28,25 +28,15 @@ function onImageClick(event) {
     return;
   }
   const lightbox = new SimpleLightbox(".gallery a", {
-    elements: [
-      {
-        src: event.target.dataset.source,
-        title: event.target.alt,
-      },
-    ],
-
-    onShow: () => {
-      document.addEventListener("keydown", handleKeyDown);
-    },
-    onClose: () => {
-      document.removeEventListener("keydown", handleKeyDown);
-    },
+    captionsData: "alt",
+    captionDelay: 250,
   });
   lightbox.open();
+}
 
-  function handleKeyDown(event) {
-    if (event.code === "Escape") {
-      lightbox.close();
-    }
+function handleKeyDown(event) {
+  if (event.code === "Escape") {
+    lightbox.close();
   }
 }
+document.addEventListener("keydown", handleKeyDown);
