@@ -17,26 +17,13 @@ function createGalleryMarkup(items) {
 }
 
 const addGalleryMarkup = createGalleryMarkup(galleryItems);
-findGallery.innerHTML = addGalleryMarkup;
+findGallery.insertAdjacentHTML("afterbegin", addGalleryMarkup);
 
-findGallery.addEventListener("click", onImageClick);
+const lightbox = new SimpleLightbox(".gallery a", {
+  captionsData: "alt",
+  captionDelay: 250,
+});
 
-function onImageClick(event) {
-  event.preventDefault();
-
-  if (event.target.nodeName !== "IMG") {
-    return;
-  }
-  const lightbox = new SimpleLightbox(".gallery a", {
-    captionsData: "alt",
-    captionDelay: 250,
-  });
-  lightbox.open();
+const onImageClick = document.querySelectorAll(".gallery__image");
+for (const image of onImageClick) {
 }
-
-function handleKeyDown(event) {
-  if (event.code === "Escape") {
-    lightbox.close();
-  }
-}
-document.addEventListener("keydown", handleKeyDown);
