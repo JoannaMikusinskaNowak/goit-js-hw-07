@@ -23,7 +23,3 @@ const lightbox = new SimpleLightbox(".gallery a", {
   captionsData: "alt",
   captionDelay: 250,
 });
-
-const onImageClick = document.querySelectorAll(".gallery__image");
-for (const image of onImageClick) {
-}
